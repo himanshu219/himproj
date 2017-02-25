@@ -10,6 +10,7 @@
     change file_name variable in migratedata.py
     and run python manage.py migratedata
   ```
+  
 **Running Server Locally**
   ```
       nohup python manage.py runserver 0.0.0.0:56894 &
@@ -17,10 +18,10 @@
     
 **API ENDPOINTS**
 
-1. http://localhost:56894/companyinfo/L01132WB1918PLC003029/
-METHOD=GET
-OUTPUT:
-```{
+1.[COMPANY API] (http://localhost:56894/companyinfo/L01132WB1918PLC003029/)
+  METHOD=GET
+  
+    {
         cin: "L01132WB1918PLC003029",
         company_name: "NAGA DHUNSERI GROUP LTD.",
         status: "ACTIVE",
@@ -90,10 +91,10 @@ OUTPUT:
         subcategory: "Indian Non-Government Company",
         country: "INDIA"
     }
-```      
-2. http://localhost:56894/api/directorinfo/00005684/
+        
+2.[DIRECTOR API] (http://localhost:56894/api/directorinfo/00005684/)
    METHOD=GET
-```
+
     {
         din: "00005684",
         name: "CHANDRA KUMAR DHANUKA",
@@ -105,7 +106,7 @@ OUTPUT:
             }
         ]
     }
-```
+
 
 **API Design**
    API fields can be changed using fields variable
