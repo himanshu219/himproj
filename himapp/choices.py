@@ -1,10 +1,10 @@
 
 COMPANY_TYPE = (
-    ("public", 'Public'),
-    ("private", 'Private'),
+    ("Public", 'Public'),
+    ("Private", 'Private'),
 )
 
 COMPANY_STATUS = (
-    (1, 'Active'),
-    (2, 'InActive'),
+    ('Active', 'Active'),
+    ('InActive', 'InActive'),
 )

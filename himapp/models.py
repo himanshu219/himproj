@@ -8,18 +8,18 @@ from .choices import COMPANY_TYPE, COMPANY_STATUS
 
 class BasicConfigurationField(models.Model):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, unique=True, blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
     show_on_site = models.BooleanField(default=True)
     modify_date = models.DateTimeField(auto_now=True)
     created_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
+    def __unicode__(self):
+        return "%s" % (self.name)
+
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(BasicConfigurationField, self).save(*args, **kwargs)
-
-    def __unicode__(self):
-        return self.name
 
     class Meta:
         abstract = True
@@ -31,8 +31,6 @@ class City( BasicConfigurationField ):
     country = models.ForeignKey( 'Country' )#this is to reduce queries
     state = models.ForeignKey( 'State', blank = True, null = True )
 
-    def __unicode__( self ):
-        return self.name
 
     class Meta:
         ordering = ['name']
@@ -44,8 +42,6 @@ class State( BasicConfigurationField ):
 
     country = models.ForeignKey( 'Country' )
 
-    def __unicode__( self ):
-        return self.name
 
     class Meta:
         ordering = ['name']
@@ -55,8 +51,6 @@ class Country( BasicConfigurationField ):
     """ Stores all the Country Details. """
 
 
-    def __unicode__( self ):
-        return self.name
 
     class Meta:
         app_label = 'himapp'
@@ -66,8 +60,6 @@ class Category(BasicConfigurationField):
     """ Holds  Category relevant data. """
 
 
-    def __unicode__(self):
-        return self.name
 
     class Meta:
         app_label = 'himapp'
@@ -78,8 +70,6 @@ class Subcategory(BasicConfigurationField):
 
     category = models.ForeignKey(Category)
 
-    def __unicode__(self):
-        return self.name
 
     class Meta:
         app_label = 'himapp'
@@ -93,27 +83,27 @@ class Director(BasicConfigurationField):
 
 class Company(models.Model):
     cin = models.CharField(unique=True, max_length=25)
-    company_name = models.CharField(max_length=50)
+    company_name = models.CharField(max_length=100)
 
-    slug = models.SlugField(max_length=100, unique=True, blank=True)
-    status = models.IntegerField(choices=COMPANY_STATUS)
+    slug = models.SlugField(max_length=100, blank=True)
+    status = models.CharField(max_length=25)
     modify_date = models.DateTimeField(auto_now=True)
     created_date = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
 
     # category = models.ForeignKey(Category)
     subcategory = models.ForeignKey(Subcategory)
-    type = models.CharField(choices=COMPANY_TYPE, max_length=25)
+    type = models.CharField(max_length=25)
     authorised_capital = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)
     paidup_capital = models.DecimalField(max_digits=15, decimal_places=2, default=0.0)
     incorporation_date = models.DateField()
-    agm_date = models.DateField()
-    balancesheet_date = models.DateField()
+    agm_date = models.DateField(null=True, blank=True)
+    balancesheet_date = models.DateField(null=True, blank=True)
     address1 = models.TextField(null=True, blank=True)
     address2 = models.TextField(null=True, blank=True)
     full_address = models.TextField(null=True, blank=True)
     city = models.ForeignKey(City)
-    pincode = models.PositiveIntegerField()
+    pincode = models.PositiveIntegerField(null=True, blank=True)
     alldirectors = models.ManyToManyField(Director, through="DirectorCompany")
 
     def __unicode__(self):
