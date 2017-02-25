@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'himapp'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,15 +56,17 @@ WSGI_APPLICATION = 'himproj.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-TABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'db_himanshu',
-        'USER': 'himanshu',
-        'PASSWORD': 'himanshu_56894',
+        'USER': 'root',
+        'PASSWORD': 'iiita',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
+
+
 }
 
 
