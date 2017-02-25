@@ -5,7 +5,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'himproj.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include('himapp.urls')),
+    url(r'', include('himapp.urls')),
 
 
 )

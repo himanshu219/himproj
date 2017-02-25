@@ -13,7 +13,8 @@
 **Running Server Locally**
   ```
       nohup python manage.py runserver 56894 &
-
+  ```
+    
 **APIENDPOINTS**
 
 curl http://localhost:8000/api/companyinfo/L01132WB1918PLC003029/
