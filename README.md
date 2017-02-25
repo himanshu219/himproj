@@ -15,7 +15,47 @@
   ```
       nohup python manage.py runserver 0.0.0.0:56894 &
   ```
-    
+
+**Repo Structure**
+```
+├── company_data.csv
+├── db_himanshu.sql
+├── diagram.png
+├── himapp
+│   ├── admin.py    #contains admin views for data entry using django admin
+│   ├── api.py      #contains all endpoints
+│   ├── choices.py  #contains choices so that their display name and dbname are separate
+│   ├── __init__.py
+│   ├── management
+│   │   ├── commands #contains all management commands which are executed from shell
+│   │   │   ├── __init__.py
+│   │   │   └── migratedata.py
+│   │   ├── __init__.py
+│   │   
+│   ├── migrations   #migration files for easy deployment
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_auto_20170225_0833.py
+│   │   ├── 0003_auto_20170225_1008.py
+│   │   ├── 0004_auto_20170225_1042.py
+│   │   ├── 0005_auto_20170225_1057.py
+│   │   ├── 0006_auto_20170225_1109.py
+│   │   └── __init__.py
+│   ├── models.py      #contains all tables
+│   ├── serializers.py #contains all model serializers
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── himproj
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py #main urls file which includes urls from other apps
+│   └── wsgi.py
+├── himproj.uml
+├── manage.py
+├── README.md
+└── requirements.txt
+```
+
 **API ENDPOINTS**
 
 1.[COMPANY API] (http://localhost:56894/companyinfo/L01132WB1918PLC003029/)
